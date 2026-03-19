@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            let randomNumber = Math.floor(Math.random() * 3);
+            switch (randomNumber) {
+                case 0: return "Rock";
+                case 1: return "Paper";
+                case 2: return "Scissors";
+            }
+        }
+        function getHumanChoice() {
+            let selection = prompt("Please select rock, paper or scissors or rock!").toLowerCase()
+            switch (selection) {
+                case "paper": return "Paper";
+                case "scissors": return "Scissors";
+                case "rock": return "Rock";
+                default: return getHumanChoice();
+            }
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            let outcome = ""
+            let outcomeAdjective = ""
+            
+            if (humanChoice == computerChoice) { 
+                outcome = "draw"
+                return `It's a ${outcome}! ${humanChoice} matches ${computerChoice}`
+            }
+
+            else if (humanChoice == "Rock") {
+                if (computerChoice == "Scissors") {
+                    outcome = "Win"
+                }
+                else { outcome = "Lose"}
+            }
+
+            else if (humanChoice == "Paper") {
+                if (computerChoice == "Rock") {
+                    outcome = "Win"
+                }
+                else { outcome = "Lose"}
+            }
+
+            else if (humanChoice == "Scissors") {
+                if (computerChoice == "Paper") {
+                    outcome = "Win"
+                }
+                else { outcome = "Lose"}
+            }
+            
+            return `You ${outcome}! ${humanChoice} ${outcome == "Win" ? "wins against" : "loses to"} ${computerChoice}`
+        }
+        
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+            let outcome
+            for (i = 1; i <= 5; i++) {
+                outcome = playRound(getHumanChoice(), getComputerChoice())
+                console.log(outcome)
+                
+                if (outcome.includes("Win")) {
+                    humanScore++
+                }
+                else if (outcome.includes("Lose")) {
+                    computerScore++
+                }
+                else {continue}
+            }
+
+            outcome = humanScore < computerScore ? "Lose" : "Win";
+
+            return console.log(`${humanScore} - ${computerScore}! You ${outcome}!`)
+        }
+        
+        playGame()
+
+
+
+    </script>
+</body>
+</html>
