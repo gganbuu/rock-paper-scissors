@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+#selectioncontainer { 
+    display: flex;
+    justify-content: center;
+
+    gap: 100px;
+}
+
+
+button {
+    /* reset  */
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+
+    background-color: grey;
+    padding: 10px;
+}
+
+#roundresult {
+    text-align: center;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.scoreelement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreelement > p:first-of-type {
+    font-size: 100px;
+}
+
+#computerchoice, #playerchoice {
+    font-size: 100px;
+}
+

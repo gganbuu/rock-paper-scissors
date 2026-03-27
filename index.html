@@ -4,86 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <script>
-        function getComputerChoice() {
-            let randomNumber = Math.floor(Math.random() * 3);
-            switch (randomNumber) {
-                case 0: return "Rock";
-                case 1: return "Paper";
-                case 2: return "Scissors";
-            }
-        }
-        function getHumanChoice() {
-            let selection = prompt("Please select rock, paper or scissors or rock!").toLowerCase()
-            switch (selection) {
-                case "paper": return "Paper";
-                case "scissors": return "Scissors";
-                case "rock": return "Rock";
-                default: return getHumanChoice();
-            }
-        }
+    <h1>Welcome to gganbu's Rock-Paper-Scissors Game! </h1>
+    <div id="scoreboard">
+        <div class="scoreelement">
+            <p class="playerscore">0</p>
+            <i class="fa-solid fa-user"></i> 
+            <p>You</p> 
+        </div>
+        <div class="scoreelement"><i id="playerchoice"></i></div>
+        <div class="scoreelement"> 
+            <p>—</p> 
+        </div>
+        <div class="scoreelement"><i id="computerchoice"></i></div>
+        <div class="scoreelement">
+            <p class="computerscore">0</p>
+            <i class="fa-solid fa-computer"></i> 
+            <p>Computer</p> 
+        </div>
+    </div>
 
-        function playRound(humanChoice, computerChoice) {
-            let outcome = ""
-            let outcomeAdjective = ""
-            
-            if (humanChoice == computerChoice) { 
-                outcome = "draw"
-                return `It's a ${outcome}! ${humanChoice} matches ${computerChoice}`
-            }
-
-            else if (humanChoice == "Rock") {
-                if (computerChoice == "Scissors") {
-                    outcome = "Win"
-                }
-                else { outcome = "Lose"}
-            }
-
-            else if (humanChoice == "Paper") {
-                if (computerChoice == "Rock") {
-                    outcome = "Win"
-                }
-                else { outcome = "Lose"}
-            }
-
-            else if (humanChoice == "Scissors") {
-                if (computerChoice == "Paper") {
-                    outcome = "Win"
-                }
-                else { outcome = "Lose"}
-            }
-            
-            return `You ${outcome}! ${humanChoice} ${outcome == "Win" ? "wins against" : "loses to"} ${computerChoice}`
-        }
-        
-        function playGame() {
-            let humanScore = 0;
-            let computerScore = 0;
-            let outcome
-            for (i = 1; i <= 5; i++) {
-                outcome = playRound(getHumanChoice(), getComputerChoice())
-                console.log(outcome)
-                
-                if (outcome.includes("Win")) {
-                    humanScore++
-                }
-                else if (outcome.includes("Lose")) {
-                    computerScore++
-                }
-                else {continue}
-            }
-
-            outcome = humanScore < computerScore ? "Lose" : "Win";
-
-            return console.log(`${humanScore} - ${computerScore}! You ${outcome}!`)
-        }
-        
-        playGame()
-
-
-
-    </script>
+    
+    
+    <div id="selectioncontainer">
+        <button id="rockBtn">Rock</button>
+        <button id="paperBtn">Paper</button>
+        <button id="scissorsBtn">Scissors</button>
+    </div>
+    <br/>
+    <br/>
+    <div id="roundresult"></div>
 </body>
 </html>
